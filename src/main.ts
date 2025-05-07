@@ -11,7 +11,7 @@ import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import PrimeVue from 'primevue/config'
 
-import VuePictureSwipe from 'vue3-picture-swipe'
+import Aura from '@primeuix/themes/aura'
 
 import App from './App.vue'
 import router from './router'
@@ -28,9 +28,23 @@ const vuetify = createVuetify({
   },
 })
 
-const app = createApp(App).use(vuetify).component('vue-picture-swipe', VuePictureSwipe)
+const app = createApp(App).use(vuetify)
 
 app.use(createPinia())
 app.use(router)
-app.use(PrimeVue);
+
+app.use(PrimeVue, {
+  theme: {
+    preset: Aura,
+
+    options: {
+      prefix: 'p',
+
+      darkModeSelector: 'system',
+
+      cssLayer: false,
+    },
+  },
+})
+
 app.mount('#app')
