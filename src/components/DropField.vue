@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const emit = defineEmits(['drop'])
 const isDragging = ref(false)
 const color = ref('indigo')
+const uploader = ref<HTMLInputElement | null>(null)
 
 const props = withDefaults(defineProps<{ accept: string }>(), {
   accept: '.jpg, .jpeg, .png, .webp',
@@ -74,7 +75,7 @@ function handleFileList(files: FileList) {
 
     <v-card-actions>
       <v-spacer />
-      <v-btn variant="text" @click="$refs.uploader.click()">
+      <v-btn variant="text" @click="uploader?.click()">
         {{ btnText }}
       </v-btn>
     </v-card-actions>
